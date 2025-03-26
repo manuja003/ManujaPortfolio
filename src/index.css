@@ -1,0 +1,229 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 10% 4%;
+    --foreground: 213 31% 91%;
+    
+    --card: 240 10% 4%;
+    --card-foreground: 213 31% 91%;
+    
+    --popover: 240 10% 4%;
+    --popover-foreground: 213 31% 91%;
+    
+    --primary: 184 100% 35%;
+    --primary-foreground: 222 47% 1.2%;
+    
+    --secondary: 222.2 47.4% 11.2%;
+    --secondary-foreground: 210 40% 98%;
+    
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    
+    --accent: 184 100% 44%;
+    --accent-foreground: 210 40% 98%;
+    
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 184 100% 35%;
+    
+    --radius: 0.75rem;
+    
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+    
+    --timeline-line: 184 100% 35% / 30%;
+    --timeline-dot: 184 100% 35% / 20%;
+    --timeline-dot-border: 240 10% 4%;
+    --card-bg: 0 0% 100% / 5%;
+    --card-hover: 184 100% 35% / 10%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border selection:bg-primary/20 selection:text-primary;
+  }
+  
+  html {
+    @apply font-poppins scroll-smooth;
+  }
+  
+  body {
+    @apply bg-background text-foreground antialiased overflow-x-hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-montserrat font-bold;
+  }
+}
+
+@layer components {
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold mb-6 relative inline-block;
+  }
+  
+  .section-title::after {
+    content: "";
+    @apply absolute -bottom-2 left-0 w-3/4 h-1 bg-primary rounded-full;
+  }
+  
+  .glass-card {
+    @apply bg-card/50 backdrop-blur-lg border border-border/50 rounded-2xl shadow-md transition-all hover:bg-[hsla(var(--card-hover))] hover:shadow-lg;
+  }
+  
+  .education-card {
+    @apply glass-card;
+  }
+  
+  .skill-tag {
+    @apply bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium inline-block m-1 transition-all hover:bg-primary hover:text-white;
+  }
+  
+  .timeline-item {
+    @apply relative pl-8 pb-12 opacity-0;
+    animation: fadeIn 0.5s ease-out forwards;
+    animation-delay: calc(var(--animation-order) * 0.1s);
+  }
+  
+  .timeline-item::before {
+    content: "";
+    @apply absolute left-0 top-1.5 w-4 h-4 rounded-full bg-primary;
+    z-index: 1;
+  }
+  
+  .timeline-item::after {
+    content: "";
+    @apply absolute left-[7px] top-6 h-full w-[2px] bg-border;
+  }
+  
+  .timeline-item:last-child::after {
+    @apply hidden;
+  }
+  
+  .nav-link {
+    @apply relative text-foreground/80 hover:text-primary transition-colors duration-300 text-sm uppercase font-medium tracking-wider;
+  }
+  
+  .nav-link::after {
+    content: "";
+    @apply absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300;
+  }
+  
+  .nav-link:hover::after, .nav-link.active::after {
+    @apply w-full;
+  }
+  
+  .project-card {
+    @apply relative glass-card p-6 h-full transition-all duration-500 opacity-0 overflow-hidden;
+    animation: slideUp 0.5s ease-out forwards;
+    animation-delay: calc(var(--animation-order) * 0.1s);
+  }
+  
+  .smooth-transition {
+    @apply transition-all duration-300 ease-in-out;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-background;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary/30 rounded-full hover:bg-primary/50 transition-colors;
+}
+
+/* Add keyframe animations for card animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Add animations for BlurText component */
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes slideInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes slideInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
