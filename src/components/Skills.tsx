@@ -38,13 +38,13 @@ const Skills = () => {
       id: 'programming',
       title: 'Programming Languages',
       icon: <Code className="h-6 w-6 text-primary" />,
-      skills: ['React', 'HTML', 'CSS', 'Python', 'Java', 'JavaScript']
+      skills: ['React', 'HTML', 'CSS', 'Python', 'Java', 'JavaScript', 'Typescript']
     },
     {
       id: 'frontend',
       title: 'Frontend Development',
       icon: <Layout className="h-6 w-6 text-primary" />,
-      skills: ['React', 'HTML', 'CSS', 'JavaScript']
+      skills: ['React', 'HTML', 'CSS', 'JavaScript','Typescript']
     },
     {
       id: 'backend',

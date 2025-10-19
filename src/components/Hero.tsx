@@ -21,9 +21,9 @@ const Hero = () => {
       </BackgroundLines>
       <div className="container mx-auto px-6 relative z-10 flex flex-col items-center text-center">
         <div className="w-full max-w-4xl">
-          <h2 className="text-2xl md:text-3xl mb-6 font-medium text-primary animate-slideInFromLeft tracking-wider">
+          {/* <h2 className="text-2xl md:text-3xl mb-6 font-medium text-primary animate-slideInFromLeft tracking-wider">
             Hello
-          </h2>
+          </h2> */}
           
           <h1 className="text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tight text-white dark:text-white animate-slideInFromLeft leading-tight" 
               style={{ 

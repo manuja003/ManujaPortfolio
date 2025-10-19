@@ -169,7 +169,7 @@ const Contact = () => {
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       className="w-full px-4 py-3 rounded-lg bg-background border border-border focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-                      placeholder="John Doe"
+                      placeholder="Your Name"
                       required
                     />
                   </div>
@@ -187,7 +187,7 @@ const Contact = () => {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       className="w-full px-4 py-3 rounded-lg bg-background border border-border focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-                      placeholder="john@example.com"
+                      placeholder="name@example.com"
                       required
                     />
                   </div>
