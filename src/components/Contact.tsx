@@ -170,6 +170,7 @@ const Contact = () => {
                       onChange={(e) => setName(e.target.value)}
                       className="w-full px-4 py-3 rounded-lg bg-background border border-border focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
                       placeholder="Your Name"
+                      autoComplete='off'
                       required
                     />
                   </div>
