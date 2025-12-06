@@ -62,7 +62,7 @@ const Projects = () => {
       image: "/images/projects/GalleLankaTravels.png",
       tags: ["React", "Tailwind Css", "TypeScript", "HTML"],
       // github: "https://github.com/manuja003/education-sdg",
-      demo: "https://education-sdg-demo.netlify.app",
+      demo: "https://galle-lanka-explore.vercel.app",
     },
     {
       id: 4,
