@@ -59,7 +59,7 @@ const Projects = () => {
       id: 3,
       title: "Galle Lanka Travels",
       description: "Galle Lanka Travels is a trusted travel and vehicle hire service in Sri Lanka, helping visitors explore the island with ease. We offer customizable tours, airport transfers, and comfortable vehicles with professional drivers, so you can enjoy stress-free, budget-friendly journeys to Sri Lanka’s most beautiful destinations.",
-      image: "/images/projects/.png",
+      image: "/images/projects/GalleLankaTravels.png",
       tags: ["React", "Tailwind Css", "TypeScript", "HTML"],
       // github: "https://github.com/manuja003/education-sdg",
       demo: "https://education-sdg-demo.netlify.app",
