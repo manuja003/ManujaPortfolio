@@ -10,7 +10,7 @@ export const HeroSection = () => {
   const items = Array(6).fill(`${marqueeText} ${separator} `);
 
   return (
-    <section className="h-screen w-full flex flex-col relative overflow-hidden bg-[#0A0A0B]">
+    <section id="top" className="min-h-[100svh] w-full flex flex-col relative overflow-hidden bg-[#0A0A0B]">
       {/* Marquee keyframes and styles */}
       <style>{`
         @keyframes marquee-scroll {
@@ -34,20 +34,10 @@ export const HeroSection = () => {
         }
       `}</style>
 
-      {/* Navbar */}
-      <FadeIn delay={0} y={-20} as="nav" className="flex justify-between items-center px-6 md:px-10 pt-6 md:pt-8 w-full z-20">
-        <div className="flex flex-wrap gap-4 md:gap-6 lg:gap-10 justify-center md:justify-between w-full">
-          {["About", "Services", "Skills", "Projects", "Education", "Achievements", "Contact"].map((item) => (
-            <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
-              className="text-[#D7E2EA] font-medium uppercase tracking-wider text-sm md:text-lg lg:text-[1.4rem] transition-opacity duration-200 hover:opacity-70"
-            >
-              {item}
-            </a>
-          ))}
-        </div>
-      </FadeIn>
+      {/* Accessible page heading (visual title is the animated marquee below) */}
+      <h1 className="sr-only">
+        Manuja Pinsara Lankanath — Software Engineer &amp; MERN Stack Developer
+      </h1>
 
       {/* Hero Marquee Heading */}
       <div className="flex-1 flex flex-col justify-center items-center z-0 w-full">
@@ -68,7 +58,7 @@ export const HeroSection = () => {
       </div>
 
       {/* Hero Portrait */}
-      <div className="absolute left-1/2 -translate-x-1/2 z-10 w-[280px] sm:w-[360px] md:w-[440px] lg:w-[520px] top-1/2 -translate-y-1/2 sm:top-auto sm:translate-y-0 sm:bottom-0">
+      <div className="absolute left-1/2 -translate-x-1/2 z-10 w-[220px] sm:w-[360px] md:w-[440px] lg:w-[520px] bottom-0 pointer-events-none sm:pointer-events-auto">
         <FadeIn delay={0.6} y={30}>
           <Magnet padding={150} strength={3}>
             <img

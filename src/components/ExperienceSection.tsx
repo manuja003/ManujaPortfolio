@@ -7,7 +7,7 @@ const experienceData = [
     role: "Software Engineer Intern",
     company: "Scienter Technologies (Pvt) Ltd",
     location: "Colombo, Sri Lanka",
-    duration: "June 2025 - Present",
+    duration: "June 2025 - July 2026",
     desc: "Spearheading the development of enterprise-grade software modules. Collaborating with cross-functional teams to optimize legacy systems, implement modern design patterns, and ensure the delivery of robust, high-availability technical solutions.",
     gradient: "linear-gradient(135deg, #06B6D4 0%, #7DD3FC 50%, #FFFFFF 100%)",
   },

@@ -21,14 +21,8 @@ export const ContactSection = () => {
     const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
     const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
-    console.log('Attempting to send email with:', {
-      serviceId: serviceId ? 'Found' : 'MISSING',
-      templateId: templateId ? 'Found' : 'MISSING',
-      publicKey: publicKey ? 'Found' : 'MISSING',
-    });
-
     if (!serviceId || !templateId || !publicKey) {
-      toast.error("EmailJS keys are missing in .env file. Please check your setup.");
+      toast.error("Message couldn't be sent right now. Please email me directly at manujalankanath@gmail.com.");
       setIsSubmitting(false);
       return;
     }
@@ -64,29 +58,26 @@ export const ContactSection = () => {
         );
       }
 
-      // 2. Save to Firestore as backup
+      // 2. Save to Firestore as backup (non-critical)
       try {
-        console.log('Saving to Firestore...');
         await addDoc(collection(db, "messages"), {
           name,
           email,
           message,
           timestamp: serverTimestamp(),
         });
-        console.log('Firestore Success');
       } catch (fsError) {
         console.error("Firestore Error (non-critical):", fsError);
         // We don't block the success toast if only Firestore fails
       }
-      
+
       toast.success("Message sent successfully! I will get back to you soon.");
       setName("");
       setEmail("");
       setMessage("");
-    } catch (error: any) {
+    } catch (error) {
       console.error("EmailJS Error:", error);
-      const errorMessage = error?.text || error?.message || JSON.stringify(error) || "Check console for details.";
-      toast.error(`Failed to send message: ${errorMessage}`);
+      toast.error("Something went wrong sending your message. Please email me directly at manujalankanath@gmail.com.");
     } finally {
       setIsSubmitting(false);
     }
@@ -203,38 +194,38 @@ export const ContactSection = () => {
               <form onSubmit={handleSubmit} className="flex flex-col gap-8 relative z-10">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="flex flex-col gap-3">
-                    <label className="text-[#D7E2EA]/40 text-[10px] uppercase tracking-[0.2em] font-bold ml-1">Name</label>
+                    <label className="text-[#D7E2EA]/60 text-xs uppercase tracking-[0.2em] font-bold ml-1">Name</label>
                     <input
                       type="text"
                       required
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       placeholder="John Doe"
-                      className="w-full bg-[#0C0C0C] border border-white/5 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-primary/50 transition-all placeholder:text-white/10"
+                      className="w-full bg-[#0C0C0C] border border-white/5 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-primary/50 transition-all placeholder:text-white/30"
                     />
                   </div>
                   <div className="flex flex-col gap-3">
-                    <label className="text-[#D7E2EA]/40 text-[10px] uppercase tracking-[0.2em] font-bold ml-1">Email</label>
+                    <label className="text-[#D7E2EA]/60 text-xs uppercase tracking-[0.2em] font-bold ml-1">Email</label>
                     <input
                       type="email"
                       required
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="john@example.com"
-                      className="w-full bg-[#0C0C0C] border border-white/5 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-primary/50 transition-all placeholder:text-white/10"
+                      className="w-full bg-[#0C0C0C] border border-white/5 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-primary/50 transition-all placeholder:text-white/30"
                     />
                   </div>
                 </div>
 
                 <div className="flex flex-col gap-3">
-                  <label className="text-[#D7E2EA]/40 text-[10px] uppercase tracking-[0.2em] font-bold ml-1">Message</label>
+                  <label className="text-[#D7E2EA]/60 text-xs uppercase tracking-[0.2em] font-bold ml-1">Message</label>
                   <textarea
                     required
                     rows={5}
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     placeholder="Tell me about your project..."
-                    className="w-full bg-[#0C0C0C] border border-white/5 rounded-2xl px-6 py-5 text-white focus:outline-none focus:border-primary/50 transition-all resize-none placeholder:text-white/10"
+                    className="w-full bg-[#0C0C0C] border border-white/5 rounded-2xl px-6 py-5 text-white focus:outline-none focus:border-primary/50 transition-all resize-none placeholder:text-white/30"
                   />
                 </div>
 

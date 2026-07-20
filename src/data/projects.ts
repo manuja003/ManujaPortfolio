@@ -58,7 +58,6 @@ export const projectDetails: Record<string, ProjectDetail> = {
     techStack: ["React", "TypeScript", "Tailwind CSS", "Headless CMS", "Vite"],
     images: ["/images/projects/image.png"],
     liveLink: "https://udarastore.com/",
-    githubLink: "https://github.com/manuja003/education-sdg",
     gradient: "linear-gradient(135deg, #3b82f6 0%, #2dd4bf 50%, #10b981 100%)"
   },
   "event-ticketing": {

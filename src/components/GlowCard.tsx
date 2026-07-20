@@ -50,7 +50,7 @@ export const GlowCard: React.FC<GlowCardProps> = ({
           <div className="flex flex-col gap-6 h-full">
             {icon && (
               <div className="text-primary group-hover:scale-110 transition-transform duration-500">
-                {React.cloneElement(icon as React.ReactElement<any>, {
+                {React.cloneElement(icon as React.ReactElement<{ size?: number; strokeWidth?: number }>, {
                   size: 40,
                   strokeWidth: 2,
                 })}

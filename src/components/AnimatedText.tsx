@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
 
 interface AnimatedTextProps {
   text: string;
@@ -32,7 +32,7 @@ export const AnimatedText: React.FC<AnimatedTextProps> = ({ text, className = ""
 
 interface CharacterProps {
   children: string;
-  progress: any;
+  progress: MotionValue<number>;
   index: number;
   total: number;
 }

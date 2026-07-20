@@ -1,5 +1,5 @@
 import { motion, HTMLMotionProps } from "framer-motion";
-import { ReactNode } from "react";
+import { ReactNode, ElementType } from "react";
 
 interface FadeInProps extends HTMLMotionProps<"div"> {
   children: ReactNode;
@@ -7,7 +7,7 @@ interface FadeInProps extends HTMLMotionProps<"div"> {
   duration?: number;
   x?: number;
   y?: number;
-  as?: any;
+  as?: ElementType;
 }
 
 export const FadeIn = ({

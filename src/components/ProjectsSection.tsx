@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
 import { LiveProjectButton, CaseStudyButton } from "./Buttons";
 import { FadeIn } from "./FadeIn";
 import { Link, useNavigate } from "react-router-dom";
@@ -153,7 +153,7 @@ export const ProjectsSection = () => {
 interface ProjectCardProps {
   index: number;
   project: (typeof projects)[0];
-  progress: any;
+  progress: MotionValue<number>;
   total: number;
 }
 
@@ -167,7 +167,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ index, project, progress, tot
   const scale = useTransform(progress, [start, 1], [1, targetScale]);
 
   return (
-    <div className="h-[85vh] sticky top-24 md:top-32 flex justify-center items-start">
+    <div className="h-[85vh] sm:h-[85vh] sticky top-20 md:top-32 flex justify-center items-start">
       <motion.div
         ref={cardRef}
         style={{
@@ -231,26 +231,38 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ index, project, progress, tot
           )}
         </div>
 
-        {/* Bottom Row - Image Grid */}
-        <div className="flex-1 grid grid-cols-10 gap-4 md:gap-6 min-h-0 relative z-10">
-          <div className="col-span-4 flex flex-col gap-4 md:gap-6">
-            <img
-              src={project.images[0]}
-              alt={`${project.client} 1`}
-              className="w-full h-[clamp(100px,12vw,180px)] object-cover rounded-[30px] sm:rounded-[40px] md:rounded-[50px] border border-[#D7E2EA]/10"
-            />
-            <img
-              src={project.images[1]}
-              alt={`${project.client} 2`}
-              className="w-full h-[clamp(120px,18vw,280px)] object-cover rounded-[30px] sm:rounded-[40px] md:rounded-[50px] border border-[#D7E2EA]/10"
-            />
-          </div>
-          <div className="col-span-6 h-full">
-            <img
-              src={project.images[2]}
-              alt={`${project.client} 3`}
-              className="w-full h-full object-cover rounded-[30px] sm:rounded-[40px] md:rounded-[50px] border border-[#D7E2EA]/10"
-            />
+        {/* Bottom Row - Image */}
+        {/* Mobile: single hero image. sm+: multi-image collage */}
+        <div className="flex-1 min-h-0 relative z-10">
+          <img
+            src={project.images[2]}
+            alt={`${project.client} preview`}
+            loading="lazy"
+            className="sm:hidden w-full h-full object-cover rounded-[30px] border border-[#D7E2EA]/10"
+          />
+          <div className="hidden sm:grid grid-cols-10 gap-4 md:gap-6 h-full">
+            <div className="col-span-4 flex flex-col gap-4 md:gap-6">
+              <img
+                src={project.images[0]}
+                alt={`${project.client} 1`}
+                loading="lazy"
+                className="w-full h-[clamp(100px,12vw,180px)] object-cover rounded-[40px] md:rounded-[50px] border border-[#D7E2EA]/10"
+              />
+              <img
+                src={project.images[1]}
+                alt={`${project.client} 2`}
+                loading="lazy"
+                className="w-full flex-1 min-h-0 object-cover rounded-[40px] md:rounded-[50px] border border-[#D7E2EA]/10"
+              />
+            </div>
+            <div className="col-span-6 h-full">
+              <img
+                src={project.images[2]}
+                alt={`${project.client} 3`}
+                loading="lazy"
+                className="w-full h-full object-cover rounded-[40px] md:rounded-[50px] border border-[#D7E2EA]/10"
+              />
+            </div>
           </div>
         </div>
       </motion.div>

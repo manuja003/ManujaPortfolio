@@ -1,3 +1,4 @@
+import { Navbar } from "../components/Navbar";
 import { HeroSection } from "../components/HeroSection";
 import { MarqueeSection } from "../components/MarqueeSection";
 import { AboutSection } from "../components/AboutSection";
@@ -13,6 +14,7 @@ import { Footer } from "../components/Footer";
 const Index = () => {
   return (
     <div className="bg-[#0A0A0B] font-kanit">
+      <Navbar />
       <main className="overflow-x-clip">
         <HeroSection />
         <MarqueeSection />
