@@ -5,7 +5,9 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
 import Index from "./pages/Index";
+import ProjectDetail from "./pages/ProjectDetail";
 import NotFound from "./pages/NotFound";
+import { FloatingActions } from "./components/FloatingActions";
 
 const queryClient = new QueryClient();
 
@@ -21,10 +23,14 @@ const App = () => {
         <Toaster />
         <Sonner position="top-right" />
         <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <div className="relative">
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/project/:id" element={<ProjectDetail />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+            <FloatingActions />
+          </div>
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>

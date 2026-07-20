@@ -3,6 +3,7 @@ import { Mail, Phone, Github, Linkedin, Instagram, Facebook } from 'lucide-react
 import { toast } from 'sonner';
 import { db } from '../firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -37,22 +38,67 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    if (!serviceId || !templateId || !publicKey) {
+      toast.error("EmailJS keys are missing in .env file.");
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
-      // Add the message to Firestore
-      await addDoc(collection(db, "messages"), {
-        name,
-        email,
-        message,
-        timestamp: serverTimestamp(),
-      });
+      // 1. Send Email via EmailJS
+      const templateParams = {
+        from_name: name,
+        from_email: email,
+        email: email,
+        reply_to: email,
+        to_email: 'manujalankanath@gmail.com',
+        message: message,
+        to_name: 'Manuja',
+      };
+
+      // 1. Send Notification to Manuja
+      await emailjs.send(
+        serviceId,
+        templateId,
+        templateParams,
+        publicKey
+      );
+
+      // 2. Send Auto-Reply to the User
+      const autoReplyTemplateId = import.meta.env.VITE_EMAILJS_AUTO_REPLY_TEMPLATE_ID;
+      if (autoReplyTemplateId) {
+        await emailjs.send(
+          serviceId,
+          autoReplyTemplateId,
+          templateParams,
+          publicKey
+        );
+      }
+
+      // 2. Also save to Firestore as a backup
+      try {
+        await addDoc(collection(db, "messages"), {
+          name,
+          email,
+          message,
+          timestamp: serverTimestamp(),
+        });
+      } catch (fsError) {
+        console.error("Firestore Error:", fsError);
+      }
       
-      toast.success('Message sent successfully!');
+      toast.success('Message sent successfully! I will get back to you soon.');
       setName('');
       setEmail('');
       setMessage('');
-    } catch (error) {
-      console.error("Error sending message:", error);
-      toast.error('Failed to send message. Please try again.');
+    } catch (error: any) {
+      console.error("EmailJS Error:", error);
+      const errorMessage = error?.text || error?.message || "Please check your keys.";
+      toast.error(`Failed to send message: ${errorMessage}`);
     } finally {
       setIsSubmitting(false);
     }
@@ -108,10 +154,10 @@ const Contact = () => {
                   <div>
                     <h4 className="text-sm text-foreground/60 uppercase font-medium">Email</h4>
                     <a 
-                      href="mailto:manuja.2023229@gmail.com" 
+                      href="mailto:manujalankanath@gmail.com" 
                       className="text-foreground hover:text-primary transition-colors"
                     >
-                      manuja.2023229@gmail.com
+                      manujalankanath@gmail.com
                     </a>
                   </div>
                 </div>

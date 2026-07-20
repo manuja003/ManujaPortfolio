@@ -23,6 +23,7 @@ export default {
     },
     extend: {
       fontFamily: {
+        kanit: ["Kanit", "sans-serif"],
         poppins: ["Poppins", "sans-serif"],
         montserrat: ["Montserrat", "sans-serif"],
       },
