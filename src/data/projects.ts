@@ -10,11 +10,43 @@ export type ProjectDetail = {
   techStack: string[];
   images: string[];
   liveLink?: string;
+  liveLinkLabel?: string;
   githubLink?: string;
   gradient: string;
 };
 
 export const projectDetails: Record<string, ProjectDetail> = {
+  "evodine": {
+    id: "evodine",
+    title: "EvoDine",
+    category: "Flutter Mobile + Web POS",
+    description: "Restaurant POS built as a cross-platform Flutter app (Android + iOS) alongside a web client, covering the full service floor from order to receipt.",
+    fullDescription: "EvoDine is a restaurant point-of-sale system I built and ship commercially through Evo Solutions. The mobile client is written in Flutter for Android and iOS, and covers the modules a restaurant actually runs on: order creation, a live kitchen and bar movement board, cashier payment processing with receipt printing, order cancellation with an approval flow, and a management dashboard. It talks to a .NET backend and shares its data model with the web client.",
+    challenges: [
+      "Kitchen and bar staff needed order status to update across devices instantly — polling was too slow and too chatty for a busy service floor.",
+      "Cashiers print receipts to Bluetooth thermal printers, which means device pairing, runtime permissions, and byte-level receipt formatting rather than a normal print dialog.",
+      "The floor's Wi-Fi is unreliable, so a dropped connection could not be allowed to take the order board down mid-service.",
+      "Credentials and payment traffic had to be handled safely against a backend still served over plain HTTP."
+    ],
+    solutions: [
+      "Built a SignalR real-time layer with automatic reconnect that pushes four notification types (new order, added items, food status change, order meta update) to the movement board.",
+      "Wrote a receipt builder that composes thermal-printer output, paired with Bluetooth device discovery and Android runtime permission handling.",
+      "Made real-time strictly an enhancement: hub failures are swallowed, and the board stays fully usable through load plus manual refresh when the connection is down.",
+      "Kept the session in memory only — the password is never persisted — added AES encryption for sensitive payloads, 30-second HTTP timeouts, and normalized error handling behind a single response envelope."
+    ],
+    architecture: "Flutter (Dart) client organised into config, models, services, screens, and widgets layers, with roughly twenty single-responsibility service classes wrapping the .NET API. A shared HttpService centralises the {code, description, data[]} response envelope, error mapping, and timeouts. Runtime configuration is loaded from a bundled settings file before boot, so the same build can point at different environments. Release builds are configured for the Play Store with R8 minification, resource shrinking, adaptive launcher icons, and keystore-based signing.",
+    techStack: ["Flutter", "Dart", "SignalR", "Bluetooth Thermal Printing", "Firebase", "AES Encryption", "REST API", "Android", "iOS"],
+    images: [
+      "/images/projects/evodine/kitchen.jpg",
+      "/images/projects/evodine/cashier.jpg",
+      "/images/projects/evodine/order.jpg",
+      "/images/projects/evodine/dashboard.jpg",
+      "/images/projects/evodine/menu.jpg"
+    ],
+    liveLink: "https://www.evosolutions.lk/products/evodine",
+    liveLinkLabel: "Request a Demo",
+    gradient: "linear-gradient(135deg, #f97316 0%, #fbbf24 50%, #10b981 100%)"
+  },
   "cheap-chaser": {
     id: "cheap-chaser",
     title: "Cheap Chaser",

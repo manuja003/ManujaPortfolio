@@ -4,11 +4,19 @@ import { Briefcase, Calendar, MapPin } from "lucide-react";
 
 const experienceData = [
   {
+    role: "Software Engineer — Mobile & Web",
+    company: "TagTeam Engineering",
+    location: "Sri Lanka",
+    duration: "2025 - Present",
+    desc: "Building the EvoSolutions product suite — EvoDine (restaurant management), EvoInn (hospitality), and EvoStock (inventory). Shipped EvoDine v1.0 in April 2026: a Flutter app for Android and iOS with a real-time SignalR kitchen board, Bluetooth thermal receipt printing, and cashier payment processing, plus the React + TypeScript web platform and product site behind it. Work spans the full product lifecycle — architecture, release engineering and Play Store setup, automated testing with Vitest and Playwright, and end-user documentation.",
+    gradient: "linear-gradient(135deg, #F97316 0%, #FBBF24 50%, #10B981 100%)",
+  },
+  {
     role: "Software Engineer Intern",
     company: "Scienter Technologies (Pvt) Ltd",
     location: "Colombo, Sri Lanka",
     duration: "June 2025 - July 2026",
-    desc: "Spearheading the development of enterprise-grade software modules. Collaborating with cross-functional teams to optimize legacy systems, implement modern design patterns, and ensure the delivery of robust, high-availability technical solutions.",
+    desc: "Year-long internship on eFinancials — Scienter's decentralised core banking system for banks and financial institutions, spanning 17 modules across lending, recovery, risk and compliance. Built the Business Service Partner modules end to end: BSP creation and save, the BSP 360 view with relationship network visualisation, advanced search, Credit Risk Rating and profiling workflows, and AML sanction document processing — delivered as Angular 19 micro-frontends on Native Federation, backed by a layered ASP.NET Core Web API over SQL Server.",
     gradient: "linear-gradient(135deg, #06B6D4 0%, #7DD3FC 50%, #FFFFFF 100%)",
   },
   {
@@ -16,7 +24,7 @@ const experienceData = [
     company: "Freelance",
     location: "Remote",
     duration: "2023 - Present",
-    desc: "Delivering end-to-end web applications for diverse clients. Architected multiple MERN-stack projects, focusing on responsive UI/UX, database normalization, and secure API integration to drive business growth.",
+    desc: "Delivering end-to-end web applications for clients including Udara Store and Galle Lanka Travels. Built with React, Node.js and Firebase, covering responsive UI, database design, and API integration through to deployment.",
     gradient: "linear-gradient(137deg, #4361EE 0%, #E0AEFF 45%, #F72585 100%)",
   },
 ];

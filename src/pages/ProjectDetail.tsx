@@ -74,7 +74,7 @@ const ProjectDetail = () => {
                     className="flex items-center gap-3 px-8 py-4 bg-white text-[#0A0A0B] rounded-full font-bold uppercase tracking-widest hover:bg-[#D7E2EA] transition-all"
                   >
                     <ExternalLink size={20} />
-                    Live Preview
+                    {project.liveLinkLabel ?? "Live Preview"}
                   </a>
                 )}
                 {project.githubLink && (

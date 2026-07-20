@@ -4,10 +4,40 @@ import { LiveProjectButton, CaseStudyButton } from "./Buttons";
 import { FadeIn } from "./FadeIn";
 import { Link, useNavigate } from "react-router-dom";
 
-const projects = [
+type ProjectCardData = {
+  id: string;
+  num: string;
+  client: string;
+  category: string;
+  description: string;
+  liveLink: string;
+  /** Overrides the "Live Project" button label, e.g. when the link is a demo request page. */
+  liveLinkLabel?: string;
+  images: string[];
+  gradient: string;
+  hasCaseStudy?: boolean;
+};
+
+const projects: ProjectCardData[] = [
+  {
+    id: "evodine",
+    num: "01",
+    client: "EvoDine",
+    category: "Flutter Mobile + Web POS",
+    description: "Restaurant POS built as a cross-platform Flutter app (Android + iOS) alongside a web client — real-time kitchen order board over SignalR, Bluetooth thermal receipt printing, and cashier payment processing.",
+    liveLink: "https://www.evosolutions.lk/products/evodine",
+    liveLinkLabel: "Request a Demo",
+    images: [
+      "/images/projects/evodine/dashboard.jpg",
+      "/images/projects/evodine/order.jpg",
+      "/images/projects/evodine/login.png",
+    ],
+    gradient: "linear-gradient(135deg, #f97316 0%, #fbbf24 50%, #10b981 100%)",
+    hasCaseStudy: true,
+  },
   {
     id: "cheap-chaser",
-    num: "01",
+    num: "02",
     client: "Cheap Chaser",
     category: "Travel Platform",
     description: "A travel platform that simplifies trip planning for tourists visiting Sri Lanka, featuring itinerary customization and budget tracking.",
@@ -22,7 +52,7 @@ const projects = [
   },
   {
     id: "udara-store",
-    num: "02",
+    num: "03",
     client: "Udara Store",
     category: "Personal / Shop",
     description: "Responsive web application for 'Udara Store,' featuring product pages with descriptions and an engaging user experience.",
@@ -37,7 +67,7 @@ const projects = [
   },
   {
     id: "galle-lanka-travels",
-    num: "03",
+    num: "04",
     client: "Galle Lanka Travels",
     category: "Travel & Tours",
     description: "Trusted travel service in Sri Lanka offering customizable tours and vehicle hire with professional drivers.",
@@ -50,21 +80,21 @@ const projects = [
     gradient: "linear-gradient(135deg, #f59e0b 0%, #ef4444 50%, #8b5cf6 100%)",
     hasCaseStudy: true,
   },
-  {
-    id: "quality-education",
-    num: "04",
-    client: "Quality Education",
-    category: "UN SDG Project",
-    description: "A web application inspired by UN SDG 'Quality Education,' featuring gallery and content pages.",
-    liveLink: "https://education-sdg-demo.netlify.app",
-    images: [
-      "/images/projects/QualityEdu.png",
-      "/images/projects/QualityEdu.png",
-      "/images/projects/QualityEdu.png",
-    ],
-    gradient: "linear-gradient(135deg, #10b981 0%, #3b82f6 50%, #6366f1 100%)",
-    hasCaseStudy: true,
-  },
+  // {
+  //   id: "quality-education",
+  //   num: "05",
+  //   client: "Quality Education",
+  //   category: "UN SDG Project",
+  //   description: "A web application inspired by UN SDG 'Quality Education,' featuring gallery and content pages.",
+  //   liveLink: "https://education-sdg-demo.netlify.app",
+  //   images: [
+  //     "/images/projects/QualityEdu.png",
+  //     "/images/projects/QualityEdu.png",
+  //     "/images/projects/QualityEdu.png",
+  //   ],
+  //   gradient: "linear-gradient(135deg, #10b981 0%, #3b82f6 50%, #6366f1 100%)",
+  //   hasCaseStudy: true,
+  // },
   /* {
     id: "event-ticketing",
     num: "05",
@@ -211,7 +241,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ index, project, progress, tot
               />
             )}
             <LiveProjectButton
-              label="Live Project"
+              label={project.liveLinkLabel ?? "Live Project"}
               onClick={() => window.open(project.liveLink, "_blank")}
             />
           </div>

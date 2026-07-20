@@ -2,14 +2,14 @@ import React from "react";
 import { FadeIn } from "./FadeIn";
 import { AnimatedText } from "./AnimatedText";
 import { ContactButton } from "./Buttons";
-import { Code2, Cpu, Globe, Rocket } from "lucide-react";
+import { Code2, Cpu, Globe, Smartphone } from "lucide-react";
 
 export const AboutSection = () => {
   const highlights = [
-    { icon: <Code2 size={24} />, title: "Full Stack", desc: "MERN Stack Specialist" },
-    { icon: <Cpu size={24} />, title: "Software Eng", desc: "IIT Sri Lanka Student" },
+    { icon: <Smartphone size={24} />, title: "Mobile", desc: "Flutter — Android & iOS" },
+    { icon: <Code2 size={24} />, title: "Full Stack", desc: "React, Node.js & Java" },
+    { icon: <Cpu size={24} />, title: "Software Eng", desc: "IIT Sri Lanka (Westminster)" },
     { icon: <Globe size={24} />, title: "Sri Lanka", desc: "Based in Colombo" },
-    { icon: <Rocket size={24} />, title: "Agile", desc: "Iterative Development" },
   ];
 
   return (
@@ -34,13 +34,13 @@ export const AboutSection = () => {
             </FadeIn>
 
             <AnimatedText
-              text="Strategic Software Engineer and MERN specialist dedicated to architecting high-performance, scalable digital solutions."
+              text="Software Engineer building cross-platform mobile apps with Flutter, backed by full-stack web and a year of industry experience."
               className="text-[#D7E2EA] font-medium leading-relaxed max-w-xl text-2xl mb-8"
             />
             
             <FadeIn delay={0.2} y={20}>
               <p className="text-[#D7E2EA]/60 text-lg leading-relaxed max-w-lg mb-12">
-                Currently advancing my expertise at IIT Sri Lanka (University of Westminster), I bridge the gap between complex backend logic and pixel-perfect user experiences. I thrive on transforming intricate technical challenges into elegant, efficient, and maintainable code.
+                A Software Engineering undergraduate at IIT Sri Lanka (University of Westminster), fresh off a year-long engineering internship. Most recently I built EvoDine — a Flutter POS running on Android and iOS with a real-time kitchen board and Bluetooth receipt printing — and shipped the web platform behind it. I enjoy the messy parts: unreliable networks, device hardware, and the details that only show up once real users are on the system.
               </p>
             </FadeIn>
 
